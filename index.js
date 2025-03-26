@@ -30,9 +30,11 @@ ptr.fillStyle = ' #2b3648';
 ptr.fillRect(245 , 250 - 230, 10, 30);
 ptr.stroke();
 
+const MIN = 1.906
+const MAX = 1.913
+const friction = 0.988;
+let angularVelocity = 0;
 let angle = 0;
-const friction = 0.95;
-let angularVelocity = 1.98;
 
 const spin = () => {
   angularVelocity *= friction;
@@ -46,7 +48,7 @@ const spin = () => {
 
 const toDefaultRotation = () => {
   angle = 0;
-  angularVelocity = rand(1.97, 2);
+  angularVelocity = rand(MIN, MAX);
 }
 
 const rand = (m, M) => Math.random() * (M - m) + m;
