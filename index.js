@@ -3,22 +3,20 @@ const ctx = canvas.getContext('2d');
 
 // wheel
 ctx.beginPath();
-ctx.arc(250, 250, 215, 0, 2 * Math.PI);
-ctx.stroke();
-ctx.fillStyle = 'blue';
+ctx.moveTo(250,250);
+ctx.arc(250, 250, 215, 1.4*Math.PI, 1.6*Math.PI);
+ctx.fillStyle = 'red';
+ctx.fill();
+
+ctx.beginPath();
+ctx.moveTo(250,250);
+ctx.arc(250, 250, 215, -0.4*Math.PI, 1.4*Math.PI);
+ctx.fillStyle = '#4461f3';
 ctx.fill();
 ctx.closePath();
 
-// lines of 'pie'
-ctx.beginPath();
-ctx.moveTo((250 + 250 - 215) / 2, 250-185);
-ctx.lineTo(250, 250);
-ctx.stroke();
-ctx.fillStyle = 'red';
-ctx.fill();
-ctx.moveTo((250 + 250 + 215) / 2, 250-185);
-ctx.lineTo(250, 250);
-ctx.stroke();
-
 // pointer 
-ctx.fillRect(245 , 250 - 220, 10, 30);
+ctx.beginPath();
+ctx.fillStyle = ' #2b3648';
+ctx.fillRect(245 , 250 - 230, 10, 30);
+ctx.stroke();
