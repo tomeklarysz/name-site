@@ -22,8 +22,36 @@ ctx.font = '18px Verdana';
 ctx.fillText('Niespodzianka', 188, 300);
 ctx.closePath();
 
-// pointer 
-ctx.beginPath();
-ctx.fillStyle = ' #2b3648';
-ctx.fillRect(245 , 250 - 230, 10, 30);
-ctx.stroke();
+// pointer
+const pointer = document.getElementById('pointer');
+const ptr = pointer.getContext('2d');
+ptr.beginPath();
+ptr.fillStyle = ' #2b3648';
+ptr.fillRect(245 , 250 - 230, 10, 30);
+ptr.stroke();
+
+let angle = 0;
+const friction = 0.95;
+let angularVelocity = 1.98;
+
+const spin = () => {
+  angularVelocity *= friction;
+  if (angularVelocity < 0.002) angularVelocity = 0;
+  angle += angularVelocity
+  ctx.canvas.style.transform = `rotate(${angle}rad)`;
+  if (angularVelocity > 0) {
+    requestAnimationFrame(spin);
+  }
+}
+
+const toDefaultRotation = () => {
+  angle = 0;
+  angularVelocity = rand(1.97, 2);
+}
+
+const rand = (m, M) => Math.random() * (M - m) + m;
+
+document.querySelector('button').addEventListener('click', () => {
+  toDefaultRotation();
+  spin();
+});

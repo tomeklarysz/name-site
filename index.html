@@ -7,7 +7,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="wheel" width="500" height="500"></canvas>
+  <canvas id="pointer" width="500", height="500"
+  style="position: absolute; z-index: 1;"></canvas>
+  <canvas id="wheel" width="500" height="500"
+  style="position: absolute;"></canvas>
+  <button style="position: absolute; left: 0">spin</button>
   <script src="index.js" type="module" defer></script>
 </body>
 </html>
