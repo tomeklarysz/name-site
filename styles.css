@@ -1,6 +1,10 @@
 html, body {
-  height: 100%;
-  margin: 0%;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 body {
@@ -25,4 +29,24 @@ body {
   background: #fff;
   border: 2px solid black;
   border-radius: 50%;
+}
+
+
+@media (max-width: 380px) {
+  #spin {
+    font-size: 15px;
+    height: 5%;
+  }
+}
+@media (max-width: 400px) {
+  #spin {
+    font-size: 18px;
+    height: 5%;
+  }
+}
+@media (max-width: 450px) {
+  #spin {
+    font-size: 20px;
+    height: 5%;
+  }
 }
