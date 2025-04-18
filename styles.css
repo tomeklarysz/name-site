@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  margin: 0%;
 }
 
 body {
@@ -9,3 +10,19 @@ body {
   align-items: center;
 }
 
+#spin {
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-size: 29px;
+  font-family: sans-serif;
+  height: 10%;
+  margin: 15%;
+  padding: 1%;
+  background: #fff;
+  border: 2px solid black;
+  border-radius: 50%;
+}
