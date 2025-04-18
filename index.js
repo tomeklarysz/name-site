@@ -1,45 +1,54 @@
 const canvas = document.getElementById('wheel');
 const ctx = canvas.getContext('2d');
 
-// wheel
-ctx.beginPath();
-ctx.moveTo(250,250);
-ctx.arc(250, 250, 215, 1.8*Math.PI, 2*Math.PI);
-ctx.closePath();
-ctx.fillStyle = 'red';
-ctx.fill();
-ctx.strokeStyle = 'black';
-ctx.stroke();
-ctx.fillStyle = 'black';
-ctx.font = '15px Verdana';
-// ctx.fillText('Płacisz 6 zł', 210, 100);
-// ctx.fillText('za disney', 215, 120);
+const r = 215;
+const cx = canvas.width / 2;
+const cy = canvas.height / 2;
 
-let N = 9;
-let sectorsAngle = 0;
+const N = 9;
+const angleStep = (2*Math.PI) / N;
+
 for (let i=0; i<N; i++) {
-  ctx.beginPath();
-  ctx.moveTo(250,250);
-  ctx.arc(250, 250, 215, sectorsAngle*Math.PI, (sectorsAngle+0.2)*Math.PI);
-  ctx.closePath();
+  
+  const startAngle = i * angleStep;
+  const endAngle = startAngle + angleStep;
+  const middleAngle = (startAngle + endAngle) / 2;
 
-  ctx.fillStyle = '#4461f3';
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.arc(cx, cy, r, startAngle, endAngle);
+  ctx.closePath();
+  ctx.fillStyle = i == 8 ? 'red' :'#4461f3';
   ctx.fill();
 
   ctx.strokeStyle = 'black';
   ctx.stroke();
-  ctx.fillStyle = 'black';
-  ctx.font = '18px Verdana';
-  // ctx.fillText('Niespodzianka', 188, 300);
-  ctx.closePath();
-  sectorsAngle += 0.2;
+
+  const x = cx + 0.6*r*Math.cos(middleAngle);
+  const y = cy + 0.6*r*Math.sin(middleAngle);
+  
+  ctx.save();
+  ctx.translate(x,y);
+  ctx.rotate(middleAngle);
+  
+  ctx.fillStyle = "black";
+  ctx.font = "14px sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  const text = i == 8 ? 'Płacisz 6zł za disney' : 'Niespodzianka';
+  ctx.fillText(text, 0, 0);
+  
+  ctx.restore();
 }
+
+ctx.canvas.style.transform = `rotate(${0.9}rad)`;
+
 // pointer
 const pointer = document.getElementById('pointer');
 const ptr = pointer.getContext('2d');
 ptr.beginPath();
 ptr.fillStyle = ' #2b3648';
-ptr.fillRect(245 , 250 - 230, 10, 30);
+ptr.fillRect(450, 245, 30, 10);
 ptr.stroke();
 
 const MIN = 1.906
